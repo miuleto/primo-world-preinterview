@@ -1,51 +1,51 @@
 
-export function merge(collection1:number[],collection2:number[],collection3:number[]){
-    const a:number = collection1.length;
-    const b:number = collection2.length;
-    const c:number = collection3.length;
+export function merge(collection_1:number[],collection_2:number[],collection_3:number[]){
+    const a:number = collection_1.length;
+    const b:number = collection_2.length;
+    const c:number = collection_3.length;
     
     let i:number = 0, j:number = 0, k:number = 0;
     let minimum : number;
 
     let resultcollection: number[] = [];
     while(i < a && j < b && k < c){
-        minimum = Math.min(Math.min(collection1[i],collection2[j]),collection3[c-k-1])
+        minimum = Math.min(Math.min(collection_1[i],collection_2[j]),collection_3[c-k-1])
         resultcollection.push(minimum);
-        if (minimum === collection1[i]){
+        if (minimum === collection_1[i]){
             i++;
-        } else if (minimum === collection2[j]){
+        } else if (minimum === collection_2[j]){
             j++;
         } else {
             k++;
         }
     }
-    // went through collection1
+    // went through collection_1
     while(j < b && k < c){
-        minimum = Math.min(collection2[j],collection3[c-k-1]);
+        minimum = Math.min(collection_2[j],collection_3[c-k-1]);
         resultcollection.push(minimum);
-        if (minimum === collection2[j]){
+        if (minimum === collection_2[j]){
             j++;
         } else {
             k++;
         }
     }
 
-    // went through collection2
+    // went through collection_2
     while(i < a && k < c){
-        minimum = Math.min(collection1[i],collection3[c-k-1]);
+        minimum = Math.min(collection_1[i],collection_3[c-k-1]);
         resultcollection.push(minimum);
-        if (minimum === collection1[i]){
+        if (minimum === collection_1[i]){
             i++;
         } else {
             k++;
         }
     }
 
-    // went through collection3
+    // went through collection_3
     while(i < a && j < b){
-        minimum = Math.min(collection1[i],collection2[j]);
+        minimum = Math.min(collection_1[i],collection_2[j]);
         resultcollection.push(minimum);
-        if (minimum === collection1[i]){
+        if (minimum === collection_1[i]){
             i++;
         } else {
             j++;
@@ -54,15 +54,15 @@ export function merge(collection1:number[],collection2:number[],collection3:numb
 
     //check for any remaining
     while (i < a){
-        resultcollection.push(collection1[i]);
+        resultcollection.push(collection_1[i]);
         i++;
     }
     while (j < b){
-        resultcollection.push(collection2[j]);
+        resultcollection.push(collection_2[j]);
         j++;
     }
     while (k < c){
-        resultcollection.push(collection3[c-k-1]);
+        resultcollection.push(collection_3[c-k-1]);
         k++;
     }
 
